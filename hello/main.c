@@ -49,6 +49,7 @@ int main(int argc, char **argv)
 	char temp[256];
 	struct dirent **spu_files;
 	FILE *fh;
+	unsigned int one = 1;
 
 	nspus = spe_cpu_info_get(SPE_COUNT_USABLE_SPES, 0);
 	printf(" [PPU]: # usable synergistic processing units = %d\n", nspus);
@@ -95,6 +96,13 @@ int main(int argc, char **argv)
 	free(spu_files);
 
 	for (i = 0; i < nspus; ++i) {
+		retval = spe_in_mbox_write(data[i].id, &one, 1,
+		                           SPE_MBOX_ALL_BLOCKING);
+		if (unlikely(1 != retval)) {
+			perror("spe_in_mbox_write");
+			exit(128);
+		}
+
 		retval = pthread_join(data[i].pthread, NULL);
 		if (unlikely(retval)) {
 			perror("pthread_join");
