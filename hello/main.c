@@ -2,6 +2,7 @@
 #define _SVID_SOURCE
 
 #include "common/types.h"
+#include "common/compiler.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,8 +25,9 @@ void *ppu_pthread_function(void *arg)
 	int retval;
 	unsigned int entry = SPE_DEFAULT_ENTRY;
 
-	if ((retval = spe_context_run(data->id, &entry, 0,
-				      data->argp, NULL, NULL)) < 0) {
+	retval = spe_context_run(data->id, &entry, 0,
+	                         data->argp, NULL, NULL);
+	if (unlikely(retval < 0)) {
 		perror("spe_context_run");
 		exit(128);
 	}
@@ -57,16 +59,17 @@ int main(int argc, char **argv)
 			exit(128);
 		}
 
-		if (0 != (retval = spe_program_load(data[i].id, &spu_program))) {
+		retval = spe_program_load(data[i].id, &spu_program);
+		if (unlikely(retval)) {
 			perror("spe_program_load");
 			exit(128);
 		}
 
 		data[i].argp = (void *)(ull )i;
 
-		if (0 != (retval = pthread_create(&data[i].pthread, NULL,
-						  ppu_pthread_function,
-						  &data[i]))) {
+		retval = pthread_create(&data[i].pthread, NULL,
+		                        ppu_pthread_function, &data[i]);
+		if (unlikely(retval)) {
 			perror("pthread_create");
 			exit(128);
 		}
@@ -92,12 +95,14 @@ int main(int argc, char **argv)
 	free(spu_files);
 
 	for (i = 0; i < nspus; ++i) {
-		if (0 != (retval = pthread_join(data[i].pthread, NULL))) {
+		retval = pthread_join(data[i].pthread, NULL);
+		if (unlikely(retval)) {
 			perror("pthread_join");
 			exit(128);
 		}
 
-		if (0 != (retval = spe_context_destroy(data[i].id))) {
+		retval = spe_context_destroy(data[i].id);
+		if (unlikely(retval)) {
 			perror("spe_context_destroy");
 			exit(128);
 		}
