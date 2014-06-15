@@ -95,6 +95,8 @@ static int stream_fill_arrays_on_ppu(int N,
         	b[i] = 2.0;
         	c[i] = 0.0;
 	}
+
+	return 0;
 }
 
 /*
@@ -122,7 +124,7 @@ static int stream_validate_arrays_on_ppu(int N,
 
 	for (i = 0; i < ntimes; ++i) {
 		c0 = a0;
-		b0 = scalar *c0;
+		b0 = scalar * c0;
 		c0 = a0 + b0;
 		a0 = b0 + scalar *c0;
 	}
@@ -262,6 +264,8 @@ int stream_execute_main_loop_on_ppu(int N, int ntimes,
 	for (i = 0; i < ntimes-1; ++i) {
 		stream_call_kernels_from_ppu(N, a, b, c, scalar, times[i]);
 	}
+
+	return 0;
 }
 
 #endif
