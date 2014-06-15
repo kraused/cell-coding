@@ -52,8 +52,13 @@ static int exec_spu_program(spe_program_handle_t *handle, int N,
 {
 	int i, nspus;
 	int retval;
-	
-	nspus = spe_cpu_info_get(SPE_COUNT_USABLE_SPES, 0);
+	char *tailptr;
+
+	if (getenv("NSPUS")) {
+		nspus = (int )strtol(getenv("NSPUS"), &tailptr, 0);
+	} else {
+		nspus = spe_cpu_info_get(SPE_COUNT_USABLE_SPES, 0);
+	}
 
 	for (i = 0; i < nspus; ++i) {
 		args[i].N      = N / nspus;
