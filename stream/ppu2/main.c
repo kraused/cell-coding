@@ -95,7 +95,7 @@ int main(int argc, char **argv)
 
 	retval = stream_alloc_arrays_on_ppu(LEN, 128, &a, &b, &c);
 	if (unlikely(retval)) {
-		fprintf(stderr, "stream_alloc_arrays_on_ppu failed with error %d.\n", retval);
+		fprintf(stderr, " stream_alloc_arrays_on_ppu failed with error %d.\n", retval);
 		return 1;
 	}
 
