@@ -2,8 +2,8 @@
 #include "common/types.h"
 #include "common/compiler.h"
 
-#include "stream/spu2/args.h"
-#include "stream/spu2/msg.h"
+#include "stream/spu3/args.h"
+#include "stream/spu3/msg.h"
 
 #include <stdlib.h>
 #include <stdio.h>

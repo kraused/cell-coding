@@ -3,7 +3,7 @@
 #include "common/compiler.h"
 
 #include "stream/spu3/args.h"
-#include "stream/spu2/msg.h"
+#include "stream/spu3/msg.h"
 
 #include <spu_intrinsics.h>
 #include <spu_mfcio.h>
