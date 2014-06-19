@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 /* Should be a multiple of 128 / sizeof(float) = 32 */
-#define SIZE	256
+#define SIZE	512
 #define TAG	3
 
 volatile struct spu1_kernel_args args __attribute__((aligned(128)));
