@@ -57,10 +57,9 @@ void copy()
 			ls2[j] = ls1[j];
 		
 		mfc_put((void *)&ls2[0], (unsigned int )&args.c[i], n, TAG, 0, 0);
+		mfc_write_tag_mask(1 << TAG);
+		mfc_read_tag_status_all();
 	}
-
-	mfc_write_tag_mask(1 << TAG);
-	mfc_read_tag_status_all();
 
 	/* 
 	 * At this point it may be that i is still smaller than args.N if the length
@@ -108,10 +107,9 @@ void scale()
 			ls2[j] = spu_madd(s, ls1[j], z);
 		
 		mfc_put((void *)&ls2[0], (unsigned int )&args.b[i], n, TAG, 0, 0);
+		mfc_write_tag_mask(1 << TAG);
+		mfc_read_tag_status_all();
 	}
-		
-	mfc_write_tag_mask(1 << TAG);
-	mfc_read_tag_status_all();
 
 	/* 
 	 * At this point it may be that i is still smaller than args.N if the length
@@ -158,10 +156,9 @@ void add()
 			ls3[j] = spu_add(ls1[j], ls2[j]);
 		
 		mfc_put((void *)&ls3[0], (unsigned int )&args.c[i], n, TAG, 0, 0);
+		mfc_write_tag_mask(1 << TAG);
+		mfc_read_tag_status_all();
 	}
-		
-	mfc_write_tag_mask(1 << TAG);
-	mfc_read_tag_status_all();
 
 	/* 
 	 * At this point it may be that i is still smaller than args.N if the length
@@ -210,10 +207,9 @@ void triad()
 			ls3[j] = spu_madd(s, ls2[j], ls1[j]);
 		
 		mfc_put((void *)&ls3[0], (unsigned int )&args.a[i], n, TAG, 0, 0);
+		mfc_write_tag_mask(1 << TAG);
+		mfc_read_tag_status_all();
 	}
-		
-	mfc_write_tag_mask(1 << TAG);
-	mfc_read_tag_status_all();
 
 	/* 
 	 * At this point it may be that i is still smaller than args.N if the length
