@@ -40,7 +40,8 @@ void copy()
 	}
 
 	if (unlikely(i < args.N)) {
-		/* args.N - i will be smaller than SIZE at this point so
+		/* 
+		 * args.N - i will be smaller than SIZE at this point so
 		 * it is safe to do a DMA transfer.
 		 * We need to make sure that size is a multiple of 16.
 		 */
@@ -58,7 +59,9 @@ void copy()
 		mfc_write_tag_mask(1 << TAG);
 		mfc_read_tag_status_all();
 	}
-	/* At this point it may be that i is still smaller than args.N if the length
+
+	/* 
+	 * At this point it may be that i is still smaller than args.N if the length
 	 * was not divisible by the number of SPUs times 16.
 	 */
 }
@@ -86,7 +89,8 @@ void scale()
 	}
 
 	if (unlikely(i < args.N)) {
-		/* args.N - i will be smaller than SIZE at this point so
+		/* 
+		 * args.N - i will be smaller than SIZE at this point so
 		 * it is safe to do a DMA transfer.
 		 * We need to make sure that size is a multiple of 16.
 		 */
@@ -104,7 +108,9 @@ void scale()
 		mfc_write_tag_mask(1 << TAG);
 		mfc_read_tag_status_all();
 	}
-	/* At this point it may be that i is still smaller than args.N if the length
+
+	/* 
+	 * At this point it may be that i is still smaller than args.N if the length
 	 * was not divisible by the number of SPUs times 16.
 	 */
 }
@@ -130,7 +136,8 @@ void add()
 	}
 
 	if (unlikely(i < args.N)) {
-		/* args.N - i will be smaller than SIZE at this point so
+		/* 
+		 * args.N - i will be smaller than SIZE at this point so
 		 * it is safe to do a DMA transfer.
 		 * We need to make sure that size is a multiple of 16.
 		 */
@@ -149,7 +156,9 @@ void add()
 		mfc_write_tag_mask(1 << TAG);
 		mfc_read_tag_status_all();
 	}
-	/* At this point it may be that i is still smaller than args.N if the length
+
+	/* 
+	 * At this point it may be that i is still smaller than args.N if the length
 	 * was not divisible by the number of SPUs times 16.
 	 */
 }
@@ -177,7 +186,8 @@ void triad()
 	}
 
 	if (unlikely(i < args.N)) {
-		/* args.N - i will be smaller than SIZE at this point so
+		/* 
+		 * args.N - i will be smaller than SIZE at this point so
 		 * it is safe to do a DMA transfer.
 		 * We need to make sure that size is a multiple of 16.
 		 */
@@ -196,7 +206,9 @@ void triad()
 		mfc_write_tag_mask(1 << TAG);
 		mfc_read_tag_status_all();
 	}
-	/* At this point it may be that i is still smaller than args.N if the length
+
+	/* 
+	 * At this point it may be that i is still smaller than args.N if the length
 	 * was not divisible by the number of SPUs times 16.
 	 */
 }
