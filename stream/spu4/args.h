@@ -2,7 +2,7 @@
 #ifndef CELL_CODING_STREAM_SPU1_ARGS_H
 #define CELL_CODING_STREAM_SPU1_ARGS_H 1
 
-struct spu1_kernel_args {
+struct spu4_kernel_args {
 	int		N;
 	float *restrict	a;
 	float *restrict	b;

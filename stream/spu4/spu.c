@@ -2,7 +2,7 @@
 #include "common/types.h"
 #include "common/compiler.h"
 
-#include "stream/spu1/args.h"
+#include "stream/spu4/args.h"
 #include "stream/spu2/msg.h"
 
 #include <spu_intrinsics.h>
@@ -15,7 +15,7 @@
 #define TAG1	3
 #define TAG2	4
 
-volatile struct spu1_kernel_args args __attribute__((aligned(128)));
+volatile struct spu4_kernel_args args __attribute__((aligned(128)));
 
 volatile vector float ls1[2][SIZE / 4] __attribute__((aligned(128)));
 volatile vector float ls2[2][SIZE / 4] __attribute__((aligned(128)));

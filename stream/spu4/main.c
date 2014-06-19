@@ -46,7 +46,7 @@ void *ppu_pthread_function(void *arg)
 # define MAX_SPUS 16
 #endif
 struct ppu_pthread_data data[MAX_SPUS];
-struct spu1_kernel_args args[MAX_SPUS];
+struct spu4_kernel_args args[MAX_SPUS];
 
 static int num_usable_spus()
 {
