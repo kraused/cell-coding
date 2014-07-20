@@ -1,4 +1,5 @@
 cell-coding
 ===========
 
-Benchmarks, tests and alike for the STI Cell BEA
+Benchmarks, tests and other code for the STI Cell BEA
+
